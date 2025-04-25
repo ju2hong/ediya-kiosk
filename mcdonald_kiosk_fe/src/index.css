@@ -1,0 +1,15 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html,
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+
+#root {
+    max-width: 700px;
+    height: 100vh;
+    overflow: hidden;
+}

@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html,
+body {
+    max-width: 700px;
+    max-height: 100vh;
+}
+
+#root {
+    max-width: 700px;
+    max-height: 100vh;
+    background-color: rgb(35, 65, 31);
+}
+
+
+
+
