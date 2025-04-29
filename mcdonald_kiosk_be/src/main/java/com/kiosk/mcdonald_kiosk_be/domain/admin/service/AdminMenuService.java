@@ -80,5 +80,11 @@ public class AdminMenuService {
 
         return menu;
     }
-    
+
+    @Transactional
+    public void deleteMenu(final Long menuIdx) {
+        Menu menu = menuRepository.findById(menuIdx)
+                .orElseThrow(() -> new IllegalArgumentException("상품 삭제를 실패하였습니다. [존재하지 않는 상품 입니다.]"));
+        menuRepository.deleteById(menu.getMenuIdx());
+    }
 }

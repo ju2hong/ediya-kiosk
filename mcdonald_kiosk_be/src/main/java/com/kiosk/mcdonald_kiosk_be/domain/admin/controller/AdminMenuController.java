@@ -89,4 +89,14 @@ public class AdminMenuController {
             return ResponseDto.fail("500",e.getMessage());
         }
     }
+
+    @DeleteMapping("/menu/{menuIdx}")
+    public ResponseDto<Void> menuDelete(@PathVariable Long menuIdx) {
+        try{
+            adminMenuService.deleteMenu(menuIdx);
+        } catch (IllegalArgumentException e) {
+            return ResponseDto.fail("500","상품 정보 삭제를 실패하였습니다.");
+        }
+        return ResponseDto.successWithNoData();
+    }
 }
