@@ -20,7 +20,7 @@ public class MenuController {
         return ResponseDto.success(menuList);
     }
 
-    @GetMapping("menu")
+    @GetMapping("/menu")
     public ResponseDto<Page<CategoryMenuResponseDto>> getMenu(@RequestParam Long categoryId,
                                                     @RequestParam(value = "page", defaultValue = "0") int page) {
         Page<CategoryMenuResponseDto> menuList = menuService.getMenus(categoryId, page);
