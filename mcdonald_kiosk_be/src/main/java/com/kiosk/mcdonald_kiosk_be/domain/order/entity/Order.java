@@ -1,5 +1,6 @@
 package com.kiosk.mcdonald_kiosk_be.domain.order.entity;
 
+import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.OrderEditRequestDto;
 import com.kiosk.mcdonald_kiosk_be.domain.order.dto.OrderResponseDto;
 import com.kiosk.mcdonald_kiosk_be.domain.order.enumeration.OrderStatus;
 import jakarta.persistence.*;
@@ -38,13 +39,6 @@ public class Order {
     @Column(nullable = false)
     private boolean isDeleted;
 
-    // TODO: editOrder() 구현
-
-    public void deleteOrder(Long idx) {
-        this.orderIdx = idx;
-        this.isDeleted = true;
-    }
-
     public static OrderResponseDto toDto(Order order, int userPoint) {
         return OrderResponseDto.builder()
                 .userPoint(userPoint)
@@ -54,5 +48,16 @@ public class Order {
                 .orderNumber(order.orderNumber)
                 .orderPrice(order.orderPrice)
                 .build();
+    }
+
+    public void editOrder(Long idx, OrderEditRequestDto req) {
+        this.orderIdx=idx;
+        this.orderCount=req.getOrderCount();
+        this.orderPrice=req.getOrderPrice();
+    }
+
+    public void deleteOrder(Long idx) {
+        this.orderIdx = idx;
+        this.isDeleted = true;
     }
 }
