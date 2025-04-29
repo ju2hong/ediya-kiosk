@@ -34,10 +34,18 @@ public class AdminUserService {
     }
 
     @Transactional
+    public ResponseDto<UserResponseDto> orderDetail(Long userIdx) {
+        User user = userRepository.findById(userIdx).orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        return ResponseDto.success(UserResponseDto.fromEntity(user));
+    }
+
+    @Transactional
     public ResponseDto<Void> deleteOrder(Long userIdx) {
         User user = userRepository.findById(userIdx).orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
         user.deleteOrder(userIdx);
         userRepository.save(user);
         return ResponseDto.successWithNoData();
     }
+
+
 }

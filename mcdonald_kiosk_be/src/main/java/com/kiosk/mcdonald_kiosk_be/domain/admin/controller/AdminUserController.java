@@ -27,6 +27,11 @@ public class AdminUserController {
         return adminUserService.editUser(id,userEditRequestDto);
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseDto<UserResponseDto> getOrderDetail(@PathVariable("id") Long userIdx) {
+        return adminUserService.orderDetail(userIdx);
+    }
+
     @DeleteMapping("/user/{id}")
     public ResponseDto<Void> deleteOrder(@PathVariable("id") Long userIdx) {
         return adminUserService.deleteOrder(userIdx);
