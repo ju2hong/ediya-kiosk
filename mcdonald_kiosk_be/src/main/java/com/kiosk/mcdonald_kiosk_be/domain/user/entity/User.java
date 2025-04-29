@@ -1,5 +1,6 @@
 package com.kiosk.mcdonald_kiosk_be.domain.user.entity;
 
+import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.UserEditRequestDto;
 import com.kiosk.mcdonald_kiosk_be.domain.user.enumeration.UserRole;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -56,5 +57,14 @@ public class User {
         this.userPoint = point;
     }
 
+
+    public void editUser(Long userIdx, UserEditRequestDto req) {
+        this.userIdx = userIdx;
+        this.userId = req.getUserId();
+        this.userPw = req.getUserPw();
+        this.userName = req.getUserName();
+        this.userRole = req.getUserRole();
+        this.userPoint = req.getUserPoint();
+    }
 
 }

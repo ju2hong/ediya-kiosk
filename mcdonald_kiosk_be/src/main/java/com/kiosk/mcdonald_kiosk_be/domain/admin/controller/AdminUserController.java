@@ -1,15 +1,14 @@
 package com.kiosk.mcdonald_kiosk_be.domain.admin.controller;
 
+import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.UserEditRequestDto;
 import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.UserResponseDto;
 import com.kiosk.mcdonald_kiosk_be.domain.admin.service.AdminUserService;
+import com.kiosk.mcdonald_kiosk_be.domain.user.entity.User;
 import com.kiosk.mcdonald_kiosk_be.global.common.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/admin")
@@ -22,4 +21,10 @@ public class AdminUserController {
     public ResponseDto<Page<UserResponseDto>> getUserList(@RequestParam(value = "page",defaultValue = "0") int page) {
         return ResponseDto.success(adminUserService.getUserList(page));
     }
+
+    @PatchMapping("/user/{id}")
+    public ResponseDto<User> editUser(@PathVariable("id") Long id, @RequestBody UserEditRequestDto userEditRequestDto) {
+        return adminUserService.editUser(id,userEditRequestDto);
+    }
+
 }
