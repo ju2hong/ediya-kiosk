@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class FileDto {
     private String uuid;
-    private String filename;
+    private String fileName;
     private String contentType;
 }

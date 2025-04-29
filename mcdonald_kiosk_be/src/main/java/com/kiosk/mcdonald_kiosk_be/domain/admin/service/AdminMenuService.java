@@ -2,6 +2,7 @@ package com.kiosk.mcdonald_kiosk_be.domain.admin.service;
 
 import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.CategoryResponseDto;
 import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.MenuResponseDto;
+import com.kiosk.mcdonald_kiosk_be.domain.admin.dto.MenuUpdateRequestDto;
 import com.kiosk.mcdonald_kiosk_be.domain.menu.entity.Category;
 import com.kiosk.mcdonald_kiosk_be.domain.menu.entity.Image;
 import com.kiosk.mcdonald_kiosk_be.domain.menu.entity.Menu;
@@ -64,4 +65,20 @@ public class AdminMenuService {
         return image.getImgUrl();
     }
 
+    @Transactional
+    public void updateImage(final Long imageIdx, String newFileUrl) {
+        Image image = imageRepository.findById(imageIdx)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 이미지입니다."));
+        image.update(newFileUrl);
+    }
+
+    @Transactional
+    public Menu updateMenu(final Long menuIdx, MenuUpdateRequestDto dto) {
+        Menu menu = menuRepository.findById(menuIdx)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
+        menu.update(dto.getMenuName(),dto.getMenuCategory(),dto.getMenuPrice(),dto.getMenuCalory(),dto.isMenuRecommend());
+
+        return menu;
+    }
+    
 }
