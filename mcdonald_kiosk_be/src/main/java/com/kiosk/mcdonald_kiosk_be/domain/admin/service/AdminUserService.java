@@ -32,4 +32,12 @@ public class AdminUserService {
         user = userRepository.save(user);
         return ResponseDto.success(user);
     }
+
+    @Transactional
+    public ResponseDto<Void> deleteOrder(Long userIdx) {
+        User user = userRepository.findById(userIdx).orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+        user.deleteOrder(userIdx);
+        userRepository.save(user);
+        return ResponseDto.successWithNoData();
+    }
 }

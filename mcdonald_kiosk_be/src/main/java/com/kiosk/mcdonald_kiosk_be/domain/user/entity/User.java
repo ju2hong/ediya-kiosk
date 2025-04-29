@@ -67,4 +67,9 @@ public class User {
         this.userPoint = req.getUserPoint();
     }
 
+    public void deleteOrder(Long userIdx) {
+        this.userIdx = userIdx;
+        this.isDeleted = true;
+    }
+
 }
