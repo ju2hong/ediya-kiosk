@@ -5,7 +5,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +30,7 @@ public class JwtUtil {
 
     @PostConstruct
     protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(Keys.secretKeyFor(SignatureAlgorithm.HS256).getEncoded());
+        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
     public String createToken(String userId, UserRole userRole) {
@@ -46,10 +45,10 @@ public class JwtUtil {
                 .compact();
     }
 
-    public Authentication getAuthentication(String token) {
-        String userName = Jwts.parser().setSigningKey(secretKey)
-                .parseClaimsJws(token).getBody().get("userName",String.class);
-        UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
+    public Authentication getAuthentication(String token){
+        String email = Jwts.parser().setSigningKey(secretKey)
+                .parseClaimsJws(token).getBody().getSubject();
+        UserDetails userDetails = userDetailsService.loadUserByUsername(email);
         return new UsernamePasswordAuthenticationToken(
                 userDetails, "", userDetails.getAuthorities());
     }
