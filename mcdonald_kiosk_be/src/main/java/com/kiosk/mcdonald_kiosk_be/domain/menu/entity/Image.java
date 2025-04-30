@@ -16,4 +16,8 @@ public class Image {
     private String imgName;
     @Column(nullable = false)
     private String imgUrl;
+
+    public void update(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 }
