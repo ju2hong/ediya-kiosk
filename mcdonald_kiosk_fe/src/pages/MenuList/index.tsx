@@ -88,7 +88,7 @@ function MenuList() {
         <div className='w-full h-full bg-white p-1'>
             <div className='w-full h-1/6'>
                 <img
-                    src='/assets/ad1.jpg'
+                    src='/assets/menulogo.png'
                     alt='ad'
                     className='w-full h-full object-cover'
                 />
@@ -105,32 +105,32 @@ function MenuList() {
                     <div className='w-full flex flex-col justify-center items-center'>
                         <CategoryItem
                             img='/assets/burger_set1.png'
-                            name='추천 메뉴'
+                            name='New Menu'
                             onClick={() => clickChangeCategory(0)}
                         />
                         <CategoryItem
                             img='/assets/burger1.png'
-                            name='단품 버거'
+                            name='COFFEE'
                             onClick={() => clickChangeCategory(1)}
                         />
                         <CategoryItem
                             img='/assets/burger_set2.png'
-                            name='버거 세트'
+                            name='BEVERAGE'
                             onClick={() => clickChangeCategory(2)}
                         />
                         <CategoryItem
                             img='/assets/happymeal1.png'
-                            name='해피밀'
+                            name='FLATCCINO'
                             onClick={() => clickChangeCategory(3)}
                         />
                         <CategoryItem
                             img='/assets/side6.png'
-                            name='디저트&사이드'
+                            name='ICECREAM'
                             onClick={() => clickChangeCategory(4)}
                         />
                         <CategoryItem
                             img='/assets/drink2.png'
-                            name='커피&음료'
+                            name='BREAD'
                             onClick={() => clickChangeCategory(5)}
                         />
                     </div>
