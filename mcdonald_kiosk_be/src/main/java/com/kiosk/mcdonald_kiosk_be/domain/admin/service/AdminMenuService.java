@@ -37,10 +37,10 @@ public class AdminMenuService {
     public Page<MenuResponseDto> findByCategoryMenus(Long categoryIdx, int page) {
         Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Order.desc("menuCreateDate")));
 
-        Page<Menu> menuEntity = menuRepository.findByCategoryIdxAndIsDeleted(categoryIdx,pageable);
+        Page<Menu> menusEntity = menuRepository.findByCategoryIdxAndIsDeleted(categoryIdx,pageable);
 
-        return menuEntity.map((menu) -> new MenuResponseDto(menu,
-                imageRepository.findById(menu.getMenuIdx())
+        return menusEntity.map((menu) -> new MenuResponseDto(menu,
+                imageRepository.findById(menu.getImgIdx())
                         .orElseThrow(() -> new IllegalArgumentException("이미지가 존재하지 않습니다.")).getImgUrl(),
                 categoryRepository.findById(menu.getCategoryIdx())
                         .orElseThrow(() -> new IllegalArgumentException("카테고리가 존재하지 않습니다.")).getCategoryTitle()
