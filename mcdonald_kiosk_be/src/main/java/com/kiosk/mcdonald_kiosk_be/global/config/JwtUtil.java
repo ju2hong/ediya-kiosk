@@ -35,7 +35,7 @@ public class JwtUtil {
 
     public String createToken(String userId, UserRole userRole) {
         Claims claims = Jwts.claims().setSubject(userId);
-        claims.put("role",userRole.getValue());
+        claims.put("role","ROLE_"+userRole.getValue());
         Date now = new Date();
         return Jwts.builder()
                 .setClaims(claims)
