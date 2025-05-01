@@ -90,7 +90,7 @@ function MenuList() {
                 <img
                     src='/assets/menulogo.png'
                     alt='ad'
-                    className='w-full h-full object-cover'
+                    className='w-full h-full object-scale'
                 />
             </div>
             <div className='w-full h-3/5 flex justify-around'>
