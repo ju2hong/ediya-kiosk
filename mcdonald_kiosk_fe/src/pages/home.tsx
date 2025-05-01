@@ -9,7 +9,7 @@ function Home() {
             className='h-full flex flex-col items-center cursor-pointer'
             onClick={() => navigate('/login')}
         >
-            <div className='relative w-full h-5/6 bg-[#243c85]'>
+            <div className='relative w-full h-5/6'>
                 <div className='ms-12 mt-[100px]'>
                     <p className=' text-white text-8xl font-["Helvetica"] font-bold pb-2'>
                         EDIYA
