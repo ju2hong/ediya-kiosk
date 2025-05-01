@@ -19,21 +19,22 @@ export const OrderWithUserPoint: FC = () => {
     }, []);
 
     return (
-        <div className='h-full bg-gray-100 '>
-            <div className='flex justify-center pt-20'>
+        <div className='flex flex-col justify-center h-full bg-gray-100 text-center'>
+            <div className='flex justify-center'>
                 <img
-                    className='w-1/2 h-1/3'
-                    src='./public/assets/Mcdonald_Logo.png'
+                    className='w-[150px] h-[150px]'
+                    src='./public/assets/EdiyaLogo.png'
                 />
             </div>
-            <p className='text-center'>
-                고객의 주문번호는{' '}
-                <span className='font-bold'>{context?.data?.orderNumber}</span>{' '}
-                입니다.
-            </p>
-            <p className='font-bold text-center'>감사합니다.</p>
+            <p className='text-[20px] mt-5'>결제가 완료 되었습니다. </p>
+            <br />
+            <span className='font-bold text-[30px]'> 주문번호 </span>
+            <span className='font-bold text-[60px]'>
+                {context?.data?.orderNumber}
+            </span>
+            <br />
             {context?.data?.userPoint !== -1 && (
-                <p className='mt-8 text-center'>
+                <p className='text-[20px]'>
                     회원님의 적립금은{' '}
                     <span className='font-bold'>
                         {context?.data?.userPoint}
