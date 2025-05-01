@@ -9,30 +9,25 @@ function Home() {
             className='h-full flex flex-col items-center cursor-pointer'
             onClick={() => navigate('/login')}
         >
-            <div className='relative w-full h-5/6 bg-red-600'>
-                <div className='absolute bottom-52 -right-96 overflow-hidden'>
-                    <img
-                        src='/assets/Mcdonald_Logo.png'
-                        alt='logo'
-                        className='w-full'
-                    />
-                </div>
-                <div className='absolute w-72 left-52 bottom-36 flex flex-col items-center'>
-                    <img src='/assets/potato.png' alt='potato' />
-                    <p className='text-xs text-white'>
-                        안녕하세요. 맥도날드입니다.
+            <div className='relative w-full h-5/6 bg-[#243c85]'>
+                <div className='ms-12 mt-[100px]'>
+                    <p className=' text-white text-8xl font-["Helvetica"] font-bold pb-2'>
+                        EDIYA
+                    </p>
+                    <p className=' text-white text-8xl font-["Helvetica"] font-bold'>
+                        COFFEE
                     </p>
                 </div>
             </div>
-            <button className='h-1/6 w-4/5 flex justify-around items-center'>
+            <button className='bg-white h-1/6 w-full flex items-center p-[50px] gap-[130px]'>
                 <div className='w-28'>
                     <img
-                        src='/assets/Mcdonald_Logo.png'
+                        src='/assets/ediyaLogo.png'
                         alt='logo'
                         className='h-full'
                     />
                 </div>
-                <p className='text-white text-xl font-semibold'>
+                <p className='text-2xl font-semibold'>
                     주문하시려면 터치하세요.
                 </p>
             </button>
