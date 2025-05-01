@@ -45,25 +45,24 @@ function Join() {
     };
 
     return (
-        <div className='flex justify-center items-center h-screen'>
-            <div className='bg-emerald-100 p-8 rounded-lg shadow-md'>
-                <div className='mb-8 text-center'>
+        <div className='flex justify-center items-center h-screen bg-[#12225c]'>
+            <div className='bg-slate-200 p-[50px] rounded-lg shadow-lg'>
+                <div className='mb-2 text-center'>
                     <img
-                        src='/assets/Mcdonald_Logo.png'
-                        alt="McDonald's Logo"
-                        className='w-32 h-32 mx-auto'
+                        src='/assets/textlogo.png'
+                        alt='ediya Logo'
+                        className='w-[220px] h-[80px] mx-auto'
                     />
                 </div>
-                <h2 className='mb-4 text-2xl font-semibold text-gray-800 text-center'>
-                    회원가입
-                </h2>
                 <div className='mb-4'>
                     <input
                         type='text'
                         placeholder='아이디'
                         value={userId}
                         onChange={(e) => setUserId(e.target.value)}
-                        className='input-field rounded-md px-4 py-2 mb-2 mt-5 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
+                        className="bg-[url('assets/id.png')] bg-no-repeat  bg-[position:12px_center]  bg-[length:20px_20px] pl-10
+                        input-field rounded-md py-3 mb-2 block mx-auto border border-gray-300
+                        focus:outline-none focus:ring focus:ring-blue-400"
                     />
                 </div>
 
@@ -73,7 +72,9 @@ function Join() {
                         placeholder='비밀번호'
                         value={userPw}
                         onChange={(e) => setUserPw(e.target.value)}
-                        className='input-field rounded-md px-4 py-2 mb-2 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
+                        className="bg-[url('assets/pw.png')] bg-no-repeat  bg-[position:12px_center]  bg-[length:20px_20px] pl-10
+                        input-field rounded-md py-3 mb-2 block mx-auto border border-gray-300
+                        focus:outline-none focus:ring focus:ring-blue-400"
                     />
                 </div>
                 <div className='mb-4'>
@@ -82,20 +83,22 @@ function Join() {
                         placeholder='이름'
                         value={userName}
                         onChange={(e) => setUserName(e.target.value)}
-                        className='input-field rounded-md px-4 py-2 mb-2 border border-gray-300 focus:outline-none focus:ring focus:ring-blue-400'
+                        className="bg-[url('assets/name.png')] bg-no-repeat  bg-[position:12px_center]  bg-[length:20px_20px] pl-10
+                        input-field rounded-md py-3 mb-2 block mx-auto border border-gray-300
+                        focus:outline-none focus:ring focus:ring-blue-400"
                     />
                 </div>
-                <div className='flex justify-between'>
+                <div className='text-center'>
                     <button
                         onClick={handleJoin}
-                        className='bg-blue-600 text-white rounded-md px-4 py-2'
+                        className='bg-[#12225c] w-[250px] text-white rounded-xl py-2.5 mt-2 mb-3 mr-2'
                     >
                         회원가입
                     </button>
-
+                    <br />
                     <button
                         onClick={handleCancel}
-                        className='bg-red-600 text-white rounded-md px-4 py-2'
+                        className='bg-gray-500 w-[250px] text-white rounded-xl py-2.5 mr-2'
                     >
                         취소
                     </button>
