@@ -72,19 +72,19 @@ function SideMenuModal({ onClick }: SideMenuModalProp) {
             </div>
             <div className='mt-10'>
                 <Button
-                    bgColor='bg-gray-400'
+                    bgColor='bg-slate-200'
                     text='취소'
-                    textColor='white'
+                    textColor='#12225c'
                     textSize='lg'
-                    classes='w-24 h-10 rounded-lg font-medium hover:bg-gray-500 mr-5'
+                    classes='w-20 py-2 rounded-[20px] font-medium hover:bg-slate-300 mr-4'
                     onClick={onClick}
                 />
                 <Button
-                    bgColor='bg-green-600'
+                    bgColor='bg-[#12225c]'
                     text='완료'
                     textColor='white'
                     textSize='lg'
-                    classes='w-24 h-10 rounded-lg font-medium hover:bg-green-800 ml-5'
+                    classes='w-20 py-2 rounded-[20px] font-medium hover:bg-[#2f3e7a] ml-4'
                     onClick={() => onClickSaveItems(additionalItems)}
                 />
             </div>
