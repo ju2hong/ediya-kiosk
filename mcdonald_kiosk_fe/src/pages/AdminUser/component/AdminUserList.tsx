@@ -44,7 +44,7 @@ export const UserList: FC<UserListProps> = ({
             <td className='px-5 py-3 whitespace-nowrap text-sm'>
                 <button
                     onClick={() => onEdit(user.idx)}
-                    className='px-4 py-2 text-sm text-white bg-gray-400 hover:bg-gray-300 rounded'
+                    className='px-4 py-2 text-sm text-white bg-[#12225c] hover:bg-[#59648C] rounded'
                 >
                     수정
                 </button>
