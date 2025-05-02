@@ -69,117 +69,88 @@ export const AdminUpdateOrder = () => {
     }, []);
 
     return (
-        <div className='flex flex-col items-center h-full mt-8'>
-            <h2 className='h-12 text-2xl font-semibold text-white'>
+        <div className='flex flex-col items-center mt-8 w-full max-w-md mx-auto'>
+            <h2 className='text-2xl font-semibold mb-4 text-gray-600'>
                 주문정보 수정
             </h2>
-            <table className='w-4/5 border-2 rounded-md h-3/5 border-slate-700 bg-slate-400'>
-                <tbody>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
-                            주문코드
-                        </th>
-                        <th className='box-border w-2/3 pl-2'>
-                            <input
-                                type='text'
-                                value={editedOrder?.orderCode}
-                                className='w-full text-base font-normal text-center bg-transparent border border-none rounded-lg h-3/4 focus:outline-none'
-                                disabled
-                            />
-                        </th>
-                    </tr>
-
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
-                            주문총금액
-                        </th>
-                        <th>
-                            <input
-                                type='number'
-                                value={editedOrder?.orderPrice}
-                                onChange={(e) =>
-                                    setEditedOrder((editedOrder) => {
-                                        return {
-                                            ...editedOrder,
-                                            orderPrice: e.target.valueAsNumber,
-                                        };
-                                    })
-                                }
-                                className='w-full text-base font-normal text-center bg-transparent border border-none rounded-lg h-3/4 focus:outline-none'
-                            />
-                        </th>
-                    </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
-                            주문상품개수
-                        </th>
-                        <th>
-                            <input
-                                type='number'
-                                value={editedOrder?.orderCount}
-                                onChange={(e) =>
-                                    setEditedOrder((order) => {
-                                        return {
-                                            ...order,
-                                            orderCount: e.target.valueAsNumber,
-                                        };
-                                    })
-                                }
-                                className='w-full text-base font-normal text-center bg-transparent border border-none rounded-lg h-3/4'
-                            />
-                        </th>
-                    </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
-                            임시번호
-                        </th>
-                        <th>
-                            <input
-                                type='number'
-                                value={editedOrder?.orderNumber}
-                                disabled
-                                className='w-full text-base font-normal text-center bg-transparent border border-none rounded-lg h-3/4 focus:outline-none'
-                            />
-                        </th>
-                    </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
-                            주문상태
-                        </th>
-                        <th>
-                            <input
-                                className='font-medium text-center bg-transparent w-36 focus:outline-none'
-                                value={editedOrder?.orderStatus}
-                            ></input>
-                        </th>
-                    </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
-                            결제시간
-                        </th>
-                        <th>
-                            <p>{format(editedOrder.orderTime, 'yyyy-MM-dd')}</p>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-            <div className='flex justify-between w-1/3 h-10 mt-5'>
-                <Button
-                    bgColor='bg-blue-600'
-                    text='수정하기'
-                    textColor='white'
-                    textSize='base'
-                    classes='w-24 h-full font-semibold ml-1 hover:bg-blue-800'
-                    onClick={handleEditOrder}
-                />
-                <Button
-                    bgColor='bg-red-600'
-                    text='취소'
-                    textColor='white'
-                    textSize='base'
-                    classes='w-24 h-full font-semibold ml-1 hover:bg-red-800'
-                    onClick={() => navigate(-1)}
-                />
+            <div className='w-full bg-gray-200 rounded-lg p-4'>
+                <div className='mb-2'>
+                    <label className='block font-bold mb-1'>주문코드</label>
+                    <input
+                        type='text'
+                        value={editedOrder?.orderCode}
+                        className='w-full border border-gray-300 rounded p-2 bg-gray-100'
+                        disabled
+                    />
+                </div>
+                <div className='mb-2'>
+                    <label className='block font-bold mb-1'>주문총금액</label>
+                    <input
+                        type='number'
+                        value={editedOrder?.orderPrice}
+                        onChange={(e) =>
+                            setEditedOrder((order) => ({
+                                ...order,
+                                orderPrice: e.target.valueAsNumber,
+                            }))
+                        }
+                        className='w-full border border-gray-300 rounded p-2'
+                    />
+                </div>
+                <div className='mb-2'>
+                    <label className='block font-bold mb-1'>주문상품개수</label>
+                    <input
+                        type='number'
+                        value={editedOrder?.orderCount}
+                        onChange={(e) =>
+                            setEditedOrder((order) => ({
+                                ...order,
+                                orderCount: e.target.valueAsNumber,
+                            }))
+                        }
+                        className='w-full border border-gray-300 rounded p-2'
+                    />
+                </div>
+                <div className='mb-2'>
+                    <label className='block font-bold mb-1'>임시번호</label>
+                    <p className='p-2 bg-gray-100 text-gray-700 rounded'>
+                        {editedOrder?.orderNumber}
+                    </p>
+                </div>
+                <div className='mb-2'>
+                    <label className='block font-bold mb-1'>주문상태</label>
+                    <input
+                        type='text'
+                        value={editedOrder?.orderStatus}
+                        onChange={(e) =>
+                            setEditedOrder((order) => ({
+                                ...order,
+                                orderStatus: e.target.value,
+                            }))
+                        }
+                        className='w-full border border-gray-300 rounded p-2'
+                    />
+                </div>
+                <div className='mb-4'>
+                    <label className='block font-bold mb-1'>결제시간</label>
+                    <p className='p-2 bg-gray-100 text-gray-700 rounded'>
+                        {format(editedOrder.orderTime, 'yyyy-MM-dd')}
+                    </p>
+                </div>
+                <div className='flex justify-center'>
+                    <button
+                        className='w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400 mr-4'
+                        onClick={handleEditOrder}
+                    >
+                        수정
+                    </button>
+                    <button
+                        className='w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400'
+                        onClick={() => navigate(-1)}
+                    >
+                        취소
+                    </button>
+                </div>
             </div>
         </div>
     );
