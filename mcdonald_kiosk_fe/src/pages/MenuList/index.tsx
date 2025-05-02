@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import CategoryItem from './components/CategoryItem';
-import Button from '../../components/Button';
 import MenuItem from './components/MenuItem';
 import { BiSolidLeftArrow, BiSolidRightArrow } from 'react-icons/bi';
 import CartItem from './components/CartItem';
@@ -26,7 +25,7 @@ function MenuList() {
     const [selectedCategoryId, setSelectedCategoryId] = useState<number>(0);
     const [pageNumber, setPageNumber] = useState<number>(0);
     const [itemList, setItemList] = useState<Items>();
-    const { cart, totalPrice, totalCount, removeAllItem } = useCart();
+    const { cart, totalPrice, removeAllItem } = useCart();
     const navigate = useNavigate();
 
     // prev 페이지
@@ -85,93 +84,117 @@ function MenuList() {
     }, [pageNumber, selectedCategoryId]);
 
     return (
-        <div className='w-full h-full bg-white p-1'>
-            <div className='w-full h-1/6'>
-                <img
-                    src='/assets/menulogo.png'
-                    alt='ad'
-                    className='w-full h-full object-scale'
-                />
-            </div>
-            <div className='w-full h-3/5 flex justify-around'>
-                <div className='w-1/5 flex flex-col items-center'>
-                    <div className='w-full h-16 m-2 flex justify-center'>
+        <div className='w-full h-full bg-white flex flex-col'>
+            <div className='h-1/6 bg-[#12225c] flex'>
+                <div className='w-3/4 text-white flex flex-col justify-between m-5'>
+                    <p className='font-["Helvetica"] font-extrabold text-4xl'>
+                        EDIYA COFFEE
+                    </p>
+                    <div className='flex items-end gap-[15px]'>
                         <img
-                            src='/assets/Mcdonald_Logo.png'
-                            alt='logo'
-                            className='w-1/2 h-full'
-                        />
+                            src='/assets/home.png'
+                            className='w-[32px] ml-[10px] cursor-pointer'
+                            onClick={gotoHome}
+                        ></img>
                     </div>
-                    <div className='w-full flex flex-col justify-center items-center'>
+                </div>
+                <img src='/assets/bannerLogo.png'></img>
+            </div>
+            <div className='h-3/5 flex justify-around mt-1'>
+                <div className='w-full h-full'>
+                    <div className='flex justify-center items-center m-1'>
                         <CategoryItem
-                            img='/assets/burger_set1.png'
                             name='New Menu'
+                            bgColor={
+                                selectedCategoryId === 0
+                                    ? 'bg-[#12225c]'
+                                    : 'bg-white'
+                            }
+                            color={
+                                selectedCategoryId === 0
+                                    ? 'text-white'
+                                    : 'text-[#12225c]'
+                            }
                             onClick={() => clickChangeCategory(0)}
                         />
                         <CategoryItem
-                            img='/assets/burger1.png'
                             name='COFFEE'
+                            bgColor={
+                                selectedCategoryId === 1
+                                    ? 'bg-[#12225c]'
+                                    : 'bg-white'
+                            }
+                            color={
+                                selectedCategoryId === 1
+                                    ? 'text-white'
+                                    : 'text-[#12225c]'
+                            }
                             onClick={() => clickChangeCategory(1)}
                         />
                         <CategoryItem
-                            img='/assets/burger_set2.png'
                             name='BEVERAGE'
+                            bgColor={
+                                selectedCategoryId === 2
+                                    ? 'bg-[#12225c]'
+                                    : 'bg-white'
+                            }
+                            color={
+                                selectedCategoryId === 2
+                                    ? 'text-white'
+                                    : 'text-[#12225c]'
+                            }
                             onClick={() => clickChangeCategory(2)}
                         />
                         <CategoryItem
-                            img='/assets/happymeal1.png'
                             name='FLATCCINO'
+                            bgColor={
+                                selectedCategoryId === 3
+                                    ? 'bg-[#12225c]'
+                                    : 'bg-white'
+                            }
+                            color={
+                                selectedCategoryId === 3
+                                    ? 'text-white'
+                                    : 'text-[#12225c]'
+                            }
                             onClick={() => clickChangeCategory(3)}
                         />
                         <CategoryItem
-                            img='/assets/side6.png'
                             name='ICECREAM'
+                            bgColor={
+                                selectedCategoryId === 4
+                                    ? 'bg-[#12225c]'
+                                    : 'bg-white'
+                            }
+                            color={
+                                selectedCategoryId === 4
+                                    ? 'text-white'
+                                    : 'text-[#12225c]'
+                            }
                             onClick={() => clickChangeCategory(4)}
                         />
                         <CategoryItem
-                            img='/assets/drink2.png'
                             name='BREAD'
+                            bgColor={
+                                selectedCategoryId === 5
+                                    ? 'bg-[#12225c]'
+                                    : 'bg-white'
+                            }
+                            color={
+                                selectedCategoryId === 5
+                                    ? 'text-white'
+                                    : 'text-[#12225c]'
+                            }
                             onClick={() => clickChangeCategory(5)}
                         />
                     </div>
-                </div>
-                <div className='w-4/5 h-full'>
-                    <div className='w-full h-16 m-2 flex justify-between'>
-                        <h2 className='w-48 text-3xl ml-3 font-semibold m-auto'>
-                            추천메뉴
-                        </h2>
-                        <div className='flex flex-col mr-5 justify-between items-end'>
-                            <Button
-                                text='이 전'
-                                textColor='white'
-                                bgColor='bg-green-900'
-                                textSize='sm'
-                                classes='w-16 hover:bg-green-700'
-                                onClick={() => navigate('/place')}
-                            />
-                            <p className='text-base'>
-                                <span className='text-red-600 font-semibold'>
-                                    {sessionStorage.getItem('userName') ||
-                                        '비회원'}
-                                </span>
-                                님 안녕하세요
-                            </p>
-                        </div>
-                    </div>
-                    <div className='w-full h-4/5 px-3 grid grid-cols-3 grid-rows-3 gap-2'>
-                        {itemList?.content.map((item, index) => (
-                            <MenuItem
-                                // eslint-disable-next-line react/no-array-index-key
-                                key={item.menuIdx + '_' + index}
-                                idx={item.menuIdx}
-                                img={item.imgSrc}
-                                name={item.menuName}
-                                calory={item.menuCalory}
-                                price={item.menuPrice}
-                            />
-                        ))}
-                    </div>
-                    <div className='w-full flex justify-center items-center mt-1 gap-2 cursor-pointer'>
+                    <p className='text-base flex justify-self-end mr-3'>
+                        <span className='font-semibold'>
+                            {sessionStorage.getItem('userName') || '비회원'}
+                        </span>
+                        <p>님 안녕하세요!</p>
+                    </p>
+                    <div className='flex justify-center w-full h-5/6 gap-[15px] mt-5'>
                         <button
                             onClick={
                                 !itemList?.first ? clickPrevBtn : undefined
@@ -180,74 +203,66 @@ function MenuList() {
                         >
                             <BiSolidLeftArrow
                                 size={20}
-                                color={itemList?.first ? 'gray' : 'black'}
+                                color={itemList?.first ? '#949dc0' : '#12225c'}
                             />
                         </button>
+                        <div className='px-3 w-4/5 grid grid-cols-3 grid-rows-3 gap-2'>
+                            {itemList?.content.map((item, index) => (
+                                <MenuItem
+                                    // eslint-disable-next-line react/no-array-index-key
+                                    key={item.menuIdx + '_' + index}
+                                    idx={item.menuIdx}
+                                    img={item.imgSrc}
+                                    name={item.menuName}
+                                    calory={item.menuCalory}
+                                    price={item.menuPrice}
+                                />
+                            ))}
+                        </div>
                         <button
                             onClick={!itemList?.last ? clickNextBtn : undefined}
                             disabled={itemList?.last}
                         >
                             <BiSolidRightArrow
                                 size={20}
-                                color={itemList?.last ? 'gray' : 'black'}
+                                color={itemList?.last ? '#949dc0' : '#12225c'}
                             />
                         </button>
                     </div>
                 </div>
             </div>
-            <div className='w-full h-1/6 mt-3 border border-1'>
-                <div className='w-full h-8 px-4 leading-loose bg-green-900 text-base font-medium text-white flex justify-between'>
-                    <p>주문 내역</p>
-                    <div className='flex text-sm leading-loose'>
-                        <p className='mr-2'>총 가격: {totalPrice}원</p>
-                        <p>수량: {totalCount}</p>
+            <div className='w-full h-2/6 flex mt-[50px] bg-slate-100'>
+                <div className='w-full h-full flex items-center overflow-auto px-3'>
+                    <div className='justify-start grid grid-flow-col gap-x-2'>
+                        {cart?.map((item) => (
+                            <CartItem
+                                key={item.id}
+                                id={item.id}
+                                img={item.menuImg}
+                                totalCnt={item.totalCnt}
+                            />
+                        ))}
                     </div>
                 </div>
-                <div>
-                    <Link to='/order'>
-                        <p className='text-right mr-2 text-sm font-medium cursor-pointer'>
-                            {'>>'} 주문 상세보기
+                <div className='w-2/5 flex flex-col gap-2 bg-slate-100 items-center mt-2'>
+                    <div className='w-11/12 h-1/3 bg-white border rounded-[50px] border-[#12225c] flex flex-col items-center justify-center'>
+                        <p className='text-sm font-medium'>총 결제 금액</p>
+                        <p className='text-red-500 font-semibold'>
+                            ₩ {totalPrice}
                         </p>
-                    </Link>
-                    <div className='w-full h-16 flex justify-center overflow-auto'>
-                        <div className='w-full h-full justify-start grid auto-cols-auto grid-flow-col gap-x-2'>
-                            {cart?.map((item) => (
-                                <CartItem
-                                    key={item.id}
-                                    id={item.id}
-                                    img={item.menuImg}
-                                    totalCnt={item.totalCnt}
-                                />
-                            ))}
-                        </div>
                     </div>
                     <button
                         onClick={onClickremoveAllItem}
-                        className='border border-1 border-gray-700 rounded-sm bg-slate-100 px-2 text-xs float-right mr-2 hover:bg-slate-200'
+                        className='w-11/12 h-1/3 self-center rounded-[50px] text-base font-semibold bg-slate-200 hover:bg-slate-300'
                     >
-                        비우기
+                        전체 취소
                     </button>
+                    <Link to='/order' className='w-11/12 h-1/3'>
+                        <button className='w-full h-full self-center rounded-[50px] text-base text-white font-semibold bg-[#12225c] hover:bg-[#334689]'>
+                            결제하기
+                        </button>
+                    </Link>
                 </div>
-            </div>
-            <div className='w-full mt-1 h-10 px-1 flex justify-center items-center'>
-                <Button
-                    bgColor='bg-red-600'
-                    text='주문 취소'
-                    textColor='white'
-                    textSize='base'
-                    classes='w-1/2 h-full font-semibold mr-1 hover:bg-red-700'
-                    onClick={() => gotoHome()}
-                />
-
-                <Link to='/order' className='w-1/2 h-full'>
-                    <Button
-                        bgColor='bg-green-700'
-                        text='주문 완료'
-                        textColor='white'
-                        textSize='base'
-                        classes='w-full h-full font-semibold ml-1 hover:bg-green-800'
-                    />
-                </Link>
             </div>
         </div>
     );

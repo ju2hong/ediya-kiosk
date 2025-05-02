@@ -1,18 +1,16 @@
 interface CategoryItem {
-    img: string;
     name: string;
+    bgColor: string;
+    color: string;
     onClick: () => void;
 }
 
-function CategoryItem({ img, name, onClick }: CategoryItem) {
+function CategoryItem({ name, bgColor, color, onClick }: CategoryItem) {
     return (
         <button
             onClick={onClick}
-            className='w-full h-16 border border-1 rounded-lg mb-0.5 bg-white drop-shadow-2xl'
+            className={`w-full h-10 rounded-[50px] mb-0.5 ${bgColor} ${color}`}
         >
-            <div className='w-16 m-auto'>
-                <img src={img} alt={name} className='w-full object-cover' />
-            </div>
             <p className='text-sm font-semibold text-center'>{name}</p>
         </button>
     );

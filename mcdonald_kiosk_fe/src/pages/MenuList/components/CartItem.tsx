@@ -1,4 +1,4 @@
-import { TiDeleteOutline } from 'react-icons/ti';
+import { TiDelete } from 'react-icons/ti';
 import { useCart } from '../../../contexts/cart-context';
 
 type CartProp = {
@@ -15,19 +15,21 @@ function CartItem({ id, img, totalCnt }: CartProp) {
     };
 
     return (
-        <button
-            className='relative w-16 h-16 mx-2'
-            onClick={() => onClickRemoveItem(id)}
-        >
-            <div className='absolute -right-1 -top-1 cursor-pointer'>
-                <TiDeleteOutline size={20} color='rgb(82 82 82)' />
+        <button className='relative w-24 h-24 mx-2'>
+            <div className='absolute -right-1 -top-1'>
+                <TiDelete
+                    size={25}
+                    color='#12225c'
+                    onClick={() => onClickRemoveItem(id)}
+                    className='cursor-pointer'
+                />
             </div>
             <img
                 src={`/assets/${img}`}
                 alt='cartItem'
-                className='w-full h-full border border-none rounded-md object-cover bg-slate-50'
+                className='w-full h-full rounded-[10px] object-cover bg-slate-50'
             />
-            <div className='absolute right-1 bottom-0.5 cursor-pointer text-sm font-semibold'>
+            <div className='w-5 h-5 absolute right-1 bottom-0.5 text-sm font-semibold'>
                 {totalCnt}
             </div>
         </button>
