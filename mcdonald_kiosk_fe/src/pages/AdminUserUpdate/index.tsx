@@ -151,17 +151,13 @@ export const AdminUserUpdate = () => {
                 </div>
                 <div className='mb-2'>
                     <label className='block font-bold mb-1'>가입일</label>
-                    <input
-                        type='text'
-                        value={
-                            editedUser.userCreateDate instanceof Date
-                                ? formatDate(editedUser.userCreateDate)
-                                : ''
-                        }
-                        className='w-full border border-gray-300 rounded p-2'
-                        readOnly
-                    />
+                    <p className='p-2 bg-gray-100 text-gray-700 rounded'>
+                        {editedUser.userCreateDate instanceof Date
+                            ? formatDate(editedUser.userCreateDate)
+                            : ''}
+                    </p>
                 </div>
+
                 <div className='mb-2'>
                     <label className='block font-bold mb-1'>적립금</label>
                     <input
