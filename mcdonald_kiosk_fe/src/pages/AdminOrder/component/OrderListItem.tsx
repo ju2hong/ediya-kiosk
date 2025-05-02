@@ -20,7 +20,7 @@ export const OrderListItem: FC<OrderListItemProps> = ({
             <td className='text-center whitespace-nowrap text-sm text-gray-700'>
                 {idx}
             </td>
-            <td className='text-center text-sm text-gray-700 px-2 py-4 whitespace-normal break-words'>
+            <td className='text-center text-sm text-gray-700 px-0.5 py-1 whitespace-normal break-words'>
                 {order.orderCode}
             </td>
             <td className='text-center whitespace-nowrap text-sm text-gray-700'>
@@ -43,7 +43,7 @@ export const OrderListItem: FC<OrderListItemProps> = ({
                     수정
                 </button>
             </td>
-            <td className='px-2 py-3 whitespace-nowrap text-sm'>
+            <td className='px-1.5 py-3 whitespace-nowrap text-sm mr-1'>
                 <button
                     onClick={() => {
                         if (confirm('주문 목록을 삭제하시겠습니까?')) {
