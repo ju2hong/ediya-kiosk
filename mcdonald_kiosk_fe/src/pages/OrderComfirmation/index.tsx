@@ -45,10 +45,10 @@ export const OrderComfirmation = () => {
 
     return (
         <div className='h-full'>
-            <h1 className='m-20 text-2xl text-center text-white'>
-                주문을 확인하세요.
+            <h1 className='mt-20 font-bold text-2xl text-center text-white'>
+                주문 내역
             </h1>
-            <div className='px-4 py-4 mx-8 mt-16 bg-white rounded-md h-4/6'>
+            <div className='p-4 mx-8 mt-12 bg-white rounded-md h-2/3'>
                 <div className='mb-3 h-4/5 overflow-y-scroll'>
                     <div className='flex flex-col items-center justify-center'>
                         {cart?.map((order) => (
@@ -70,31 +70,32 @@ export const OrderComfirmation = () => {
 
                 <div className='flex justify-end mb-5'>
                     <p>총 수량: {totalCount}</p>
-                    <p className='mx-4'>총 가격: {totalPrice}</p>
+                    <p className='ml-4 mr-2'>총 가격:</p>
+                    <p className='mr-4 text-red-500'>₩ {totalPrice}</p>
                 </div>
                 <div className='flex items-center justify-between'>
                     <Button
-                        bgColor='bg-gray-400'
+                        bgColor='bg-slate-200'
                         text='뒤로가기'
-                        textColor='white'
+                        textColor='#12225c'
                         textSize='base'
-                        classes='w-36 rounded-lg font-medium hover:bg-gray-500'
+                        classes='w-44 py-3 rounded-[20px] font-bold hover:bg-slate-300'
                         onClick={() => navigate('/menu')}
                     />
                     <Button
-                        bgColor='bg-red-600'
+                        bgColor='bg-[#3a4e94]'
                         text='추가메뉴'
                         textColor='white'
                         textSize='base'
-                        classes='w-36 rounded-lg font-medium hover:bg-red-700'
+                        classes='w-44 py-3 rounded-[20px] font-medium hover:bg-[#6576b4]'
                         onClick={() => setModalOpen(true)}
                     />
                     <Button
-                        bgColor='bg-green-700'
+                        bgColor='bg-[#12225c]'
                         text='결제하기'
                         textColor='white'
                         textSize='base'
-                        classes='w-36 rounded-lg font-medium hover:bg-green-800'
+                        classes='w-44 py-3 rounded-[20px] font-medium hover:bg-[#2f3e7a]'
                         onClick={handlePayment}
                     />
                 </div>

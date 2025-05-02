@@ -17,16 +17,16 @@ function SideMenuItem({ menu, onClickAddition }: SideMenuItem) {
                 clickItem();
                 onClickAddition(menu);
             }}
-            className={`border ${clicked ? 'border-4 border-red-500' : 'border-none'} bg-slate-50 w-42 h-full rounded-md p-1 cursor-pointer flex flex-col justify-center items-center`}
+            className={`border ${clicked ? 'border-2 border-[#12225c]' : 'border-none'} bg-slate-50 w-42 h-full rounded-md p-1 cursor-pointer flex flex-col justify-center items-center`}
         >
-            <div className='w-full h-4/6 mb-0.5'>
+            <div className='w-full h-1/2 mb-0.5'>
                 <img
                     src={`/assets/${menu.imgSrc}`}
                     alt={menu.menuName}
                     className='w-full h-full object-contain'
                 />
             </div>
-            <p className='text-sm font-semibold mx-1 whitespace-nowrap overflow-hidden overflow-ellipsis'>
+            <p className='text-xs font-semibold mx-1 whitespace-nowrap overflow-hidden overflow-ellipsis'>
                 {menu.menuName}
             </p>
             <div className='flex justify-between mx-1 items-center w-4/5'>
