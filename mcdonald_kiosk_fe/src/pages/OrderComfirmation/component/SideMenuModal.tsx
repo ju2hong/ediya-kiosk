@@ -60,7 +60,9 @@ function SideMenuModal({ onClick }: SideMenuModalProp) {
 
     return (
         <div className='bg-white w-1/2 h-5/6 border rounded-lg flex flex-col justify-center items-center'>
-            <h2 className='text-2xl mt-5 mb-5'>함께 즐기면 더욱 좋습니다!</h2>
+            <h2 className='text-2xl mt-5 mb-5 font-medium'>
+                함께 즐기면 더욱 좋습니다!
+            </h2>
             <div className='w-4/5 h-4/6 grid grid-cols-3 grid-rows-3 gap-5'>
                 {itemList?.content.map((item, index) => (
                     <SideMenuItem
