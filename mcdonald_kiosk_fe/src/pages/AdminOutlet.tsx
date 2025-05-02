@@ -58,7 +58,7 @@ function AdminLayout() {
             </aside>
 
             {/* 메인 컨텐츠 */}
-            <main className='ml-16 group-hover:ml-40 transition-all duration-300 flex-1 p-10 overflow-y-auto bg-slate-400'>
+            <main className='ml-16 group-hover:ml-40 transition-all duration-300 flex-1 p-10 overflow-y-auto bg-slate-100'>
                 <header className='mb-6 flex justify-between items-center'>
                     <h1 className='text-3xl font-bold'>관리자 페이지</h1>
                     <button
@@ -66,7 +66,7 @@ function AdminLayout() {
                             sessionStorage.clear();
                             navigate('/');
                         }}
-                        className='bg-stone-400 text-white px-4 py-2 rounded hover:bg-stone-800'
+                        className='w-[100px] bg-[#12225c] text-white px-4 py-2 rounded'
                     >
                         로그아웃
                     </button>
