@@ -16,7 +16,7 @@ export const OrderListItem: FC<OrderListItemProps> = ({
     onDelete,
 }) => {
     return (
-        <tr className='bg-gray-100'>
+        <tr className='bg-white'>
             <td className='text-center whitespace-nowrap text-sm text-gray-700'>
                 {idx}
             </td>
@@ -35,10 +35,10 @@ export const OrderListItem: FC<OrderListItemProps> = ({
             <td className='text-center whitespace-nowrap text-sm text-gray-700'>
                 {format(order.orderTime, 'yyyy-MM-dd')}
             </td>
-            <td className='px-2 py-3 whitespace-nowrap text-sm'>
+            <td className='px-3 py-3 whitespace-nowrap text-sm'>
                 <button
                     onClick={() => onEdit(order.idx)}
-                    className='px-4 py-2 text-sm text-white bg-gray-400 hover:bg-gray-300 rounded'
+                    className='px-4 py-2 text-sm text-white bg-[#12225c] hover:bg-[#59648C] rounded'
                 >
                     수정
                 </button>
