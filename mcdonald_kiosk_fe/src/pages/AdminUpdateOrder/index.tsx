@@ -130,18 +130,22 @@ export const AdminUpdateOrder = () => {
                     </p>
                 </div>
                 <div className='flex justify-center'>
-                    <button
-                        className='w-1/4 bg-[#12225c] text-white px-4 py-2 rounded hover:bg-gray-400 mr-4'
+                    <Button
+                        bgColor='bg-[#12225c]'
+                        text='수정하기'
+                        textColor='white'
+                        textSize='base'
+                        classes='w-1/4 px-4 py-2 rounded hover:bg-gray-400 mr-4'
                         onClick={handleEditOrder}
-                    >
-                        수정
-                    </button>
-                    <button
-                        className='w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400'
+                    />
+                    <Button
+                        bgColor='bg-gray-600 '
+                        text='취소'
+                        textColor='white'
+                        textSize='base'
+                        classes='w-1/4 px-4 py-2 rounded hover:bg-gray-400'
                         onClick={() => navigate(-1)}
-                    >
-                        취소
-                    </button>
+                    />
                 </div>
             </div>
         </div>
