@@ -14,10 +14,8 @@ const formatDate = (date: Date): string => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
 
-    return `${year}-${month}-${day} ${hours}:${minutes}`;
+    return `${year}-${month}-${day}`;
 };
 
 export const UserList: FC<UserListProps> = ({
@@ -27,32 +25,38 @@ export const UserList: FC<UserListProps> = ({
     onEdit,
 }) => {
     return (
-        <tr className='bg-gray-200 dark:bg-gray-300'>
-            <td className='px-2 py-1'>{idx}</td>
-            <td className='px-2 py-1 font-medium text-gray-900 text-ellipsis'>
+        <tr>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {idx}
+            </td>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
                 {user.userId}
             </td>
-            <td className='px-2 py-1'>{user.userName}</td>
-            <td className='px-2 py-1'>{user.userRole}</td>
-            <td className='text-base font-normal'>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {user.userName}
+            </td>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {user.userRole}
+            </td>
+            <td className='px-4 text-center whitespace-nowrap text-sm text-gray-700'>
                 {user ? formatDate(new Date(user.userCreateDate)) : ''}
             </td>
-            <td className='pr-1.5'>
+            <td className='px-5 py-3 whitespace-nowrap text-sm'>
                 <button
-                    className='px-3 py-2 text-sm text-white bg-blue-500 border border-none rounded-lg w-14 hover:bg-blue-700'
                     onClick={() => onEdit(user.idx)}
+                    className='px-4 py-2 text-sm text-white bg-gray-400 hover:bg-gray-300 rounded'
                 >
                     수정
                 </button>
             </td>
-            <td className='pl-1.5'>
+            <td className='px-4 py-3 whitespace-nowrap text-sm'>
                 <button
                     onClick={() => {
                         if (confirm('회원 목록을 삭제하시겠습니까?')) {
                             onDelete(user.idx);
                         }
                     }}
-                    className='px-3 py-2 text-sm text-white bg-red-600 border border-none rounded-lg w-14 hover:bg-red-700'
+                    className='px-4 py-2 text-sm text-white bg-gray-400 hover:bg-gray-300 rounded'
                 >
                     삭제
                 </button>

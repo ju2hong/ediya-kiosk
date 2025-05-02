@@ -87,7 +87,7 @@ export const AdminUserUpdate = () => {
 
     return (
         <div className='flex flex-col items-center mt-8 w-full max-w-md mx-auto'>
-            <h2 className='text-2xl font-semibold mb-4 text-white'>
+            <h2 className='text-2xl font-semibold mb-4 text-gray-600'>
                 회원정보 수정
             </h2>
             <div className='w-full bg-gray-200 rounded-lg p-4'>
@@ -176,15 +176,15 @@ export const AdminUserUpdate = () => {
                         className='w-full border border-gray-300 rounded p-2'
                     />
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex justify-center'>
                     <button
-                        className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+                        className=' w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400 mr-4'
                         onClick={handleUserEdit}
                     >
                         수정
                     </button>
                     <button
-                        className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'
+                        className='w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400'
                         onClick={() => navigate(-1)}
                     >
                         취소
