@@ -94,36 +94,40 @@ const AdminUser = () => {
     }, [currentPage]);
 
     return (
-        <div className='flex flex-col items-center justify-center'>
-            <h2 className='text-3xl font-bold text-white mt-5'>회원 목록</h2>
-            <div className='w-full p-2 mt-2'>
-                <p className='text-base text-gray-300'>
+        <div className='w-full'>
+            <h2 className='text-2xl font-bold mb-5 text-center text-gray-600'>
+                회원 목록
+            </h2>
+            <div className='w-full max-w-screen-lg mt-2 mx-auto '>
+                <p className='text-base mb-2 text-gray-600'>
                     총 {totalElements}명의 회원이 있습니다.
                 </p>
-                <table className='w-full mt-3 text-base text-left text-gray-500'>
-                    <thead className='text-base text-gray-700 bg-slate-300'>
-                        <tr>
-                            <th className='px-2 py-2'>번호</th>
-                            <th className='px-2 py-2'>아이디</th>
-                            <th className='px-2 py-2'>이름</th>
-                            <th className='px-2 py-2'>권한</th>
-                            <th className='px-2 py-2'>가입일</th>
-                            <th className='px-2 py-2'>수정</th>
-                            <th className='px-2 py-2'>삭제</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users.map((user, idx) => (
-                            <UserList
-                                key={user.idx}
-                                idx={pageNumber * pageSize + 1 + idx}
-                                user={user}
-                                onDelete={handleUserDelete}
-                                onEdit={handleUserEdit}
-                            />
-                        ))}
-                    </tbody>
-                </table>
+                <div className='w-full'>
+                    <table className='table-fixed w-full border border-gray-300 rounded-md shadow-md'>
+                        <thead className='bg-white text-gray-700 border-b border-gray-200'>
+                            <tr>
+                                <th className='px-2 py-2'>번호</th>
+                                <th className='px-2 py-2'>아이디</th>
+                                <th className='px-2 py-2'>이름</th>
+                                <th className='px-2 py-2'>권한</th>
+                                <th className='px-2 py-2'>가입일</th>
+                                <th className='px-2 py-2'>수정</th>
+                                <th className='px-2 py-2'>삭제</th>
+                            </tr>
+                        </thead>
+                        <tbody className='bg-white divide-y divide-gray-200'>
+                            {users.map((user, idx) => (
+                                <UserList
+                                    key={user.idx}
+                                    idx={pageNumber * pageSize + 1 + idx}
+                                    user={user}
+                                    onDelete={handleUserDelete}
+                                    onEdit={handleUserEdit}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
                 <Pagination
                     currentPage={currentPage}
                     totalPages={totalPage}

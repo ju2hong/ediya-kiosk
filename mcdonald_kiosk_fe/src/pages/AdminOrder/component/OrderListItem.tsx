@@ -16,34 +16,41 @@ export const OrderListItem: FC<OrderListItemProps> = ({
     onDelete,
 }) => {
     return (
-        <tr key={order.idx} className='bg-gray-200 dark:bg-gray-300'>
-            <td className='px-2 py-1'>{idx}</td>
-
-            <td className='px-2 py-1 font-medium text-gray-900 text-ellipsis'>
+        <tr className='bg-white'>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {idx}
+            </td>
+            <td className='text-center text-sm text-gray-700 px-2 py-4 whitespace-normal break-words'>
                 {order.orderCode}
             </td>
-            <td className='px-2 py-1'>{order.orderPrice}</td>
-            <td className='px-2 py-1'>{order.orderNumber}</td>
-            <td className='px-2 py-1'>{order.orderStatus}</td>
-            <td className='px-2 py-1'>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {order.orderPrice}
+            </td>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {order.orderNumber}
+            </td>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
+                {order.orderStatus}
+            </td>
+            <td className='text-center whitespace-nowrap text-sm text-gray-700'>
                 {format(order.orderTime, 'yyyy-MM-dd')}
             </td>
-            <td className='pr-1.5'>
+            <td className='px-3 py-3 whitespace-nowrap text-sm'>
                 <button
-                    className='px-3 py-2 text-sm text-white bg-blue-500 border border-none rounded-lg w-14 hover:bg-blue-700'
                     onClick={() => onEdit(order.idx)}
+                    className='px-4 py-2 text-sm text-white bg-[#12225c] hover:bg-[#59648C] rounded'
                 >
                     수정
                 </button>
             </td>
-            <td className='pl-1.5'>
+            <td className='px-2 py-3 whitespace-nowrap text-sm'>
                 <button
                     onClick={() => {
                         if (confirm('주문 목록을 삭제하시겠습니까?')) {
                             onDelete(order.idx);
                         }
                     }}
-                    className='px-3 py-2 text-sm text-white bg-red-600 border border-none rounded-lg w-14 hover:bg-red-700'
+                    className='px-4 py-2 text-sm text-white bg-gray-400 hover:bg-gray-300 rounded'
                 >
                     삭제
                 </button>

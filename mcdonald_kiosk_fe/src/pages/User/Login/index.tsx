@@ -5,36 +5,61 @@ function Login() {
     const navigate = useNavigate();
     const [userId, setUserId] = useState('');
     const [userPw, setUserPw] = useState('');
-
     const handleLogin = async () => {
         if (!userId || !userPw) {
             alert('모든 필드를 입력하세요.');
             return;
         }
 
-        const data = await fetch('http://localhost:8080/api/v1/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                userId: userId,
-                userPw,
-            }),
-        })
-            .then((res) => res.json())
-            .catch((err) => console.error(err));
+        try {
+            const response = await fetch('http://localhost:8080/api/v1/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId, userPw }),
+            });
 
-        if (!data.success) {
-            alert(data.error.message);
-            return;
+            const data = await response.json();
+
+            if (!data.success) {
+                alert(data.error.message);
+                return;
+            }
+
+            const { userName, accessToken } = data.data;
+
+            sessionStorage.setItem('token', accessToken);
+            sessionStorage.setItem('userName', userName);
+
+            // JWT 토큰에서 역할 추출
+            const role = getUserRoleFromToken(accessToken);
+
+            if (role === 'ROLE_ADMIN') {
+                navigate('/admin');
+            } else if (role === 'ROLE_USER') {
+                navigate('/place');
+            } else {
+                alert('정의되지 않은 권한입니다.');
+            }
+        } catch (error) {
+            console.error('로그인 에러:', error);
+            alert('로그인 중 오류가 발생했습니다.');
         }
+    };
 
-        const { userName, accessToken } = data.data;
-        sessionStorage.setItem('token', accessToken);
-        sessionStorage.setItem('userName', userName);
+    // JWT 토큰에서 역할(role) 추출
+    const getUserRoleFromToken = (token: string): string | null => {
+        try {
+            const payload = token.split('.')[1]; // JWT 구조: header.payload.signature
+            const decodedPayload = atob(payload); // base64 디코딩
+            const parsedPayload = JSON.parse(decodedPayload);
 
-        navigate('/place');
+            return parsedPayload.role || null;
+        } catch (e) {
+            console.error('토큰 파싱 실패:', e);
+            return null;
+        }
     };
 
     return (

@@ -87,7 +87,7 @@ export const AdminUserUpdate = () => {
 
     return (
         <div className='flex flex-col items-center mt-8 w-full max-w-md mx-auto'>
-            <h2 className='text-2xl font-semibold mb-4 text-white'>
+            <h2 className='text-2xl font-semibold mb-4 text-gray-600'>
                 회원정보 수정
             </h2>
             <div className='w-full bg-gray-200 rounded-lg p-4'>
@@ -151,17 +151,13 @@ export const AdminUserUpdate = () => {
                 </div>
                 <div className='mb-2'>
                     <label className='block font-bold mb-1'>가입일</label>
-                    <input
-                        type='text'
-                        value={
-                            editedUser.userCreateDate instanceof Date
-                                ? formatDate(editedUser.userCreateDate)
-                                : ''
-                        }
-                        className='w-full border border-gray-300 rounded p-2'
-                        readOnly
-                    />
+                    <p className='p-2 bg-gray-100 text-gray-700 rounded'>
+                        {editedUser.userCreateDate instanceof Date
+                            ? formatDate(editedUser.userCreateDate)
+                            : ''}
+                    </p>
                 </div>
+
                 <div className='mb-2'>
                     <label className='block font-bold mb-1'>적립금</label>
                     <input
@@ -176,15 +172,15 @@ export const AdminUserUpdate = () => {
                         className='w-full border border-gray-300 rounded p-2'
                     />
                 </div>
-                <div className='flex justify-between'>
+                <div className='flex justify-center'>
                     <button
-                        className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'
+                        className=' w-1/4 bg-[#12225c] text-white px-4 py-2 rounded hover:bg-gray-400 mr-4'
                         onClick={handleUserEdit}
                     >
                         수정
                     </button>
                     <button
-                        className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'
+                        className='w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400'
                         onClick={() => navigate(-1)}
                     >
                         취소

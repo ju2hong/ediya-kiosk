@@ -7,23 +7,23 @@ import Button from '../../../components/Button';
 const categories = [
     {
         idx: 1,
-        name: '버거 단품',
+        name: 'COFFEE',
     },
     {
         idx: 2,
-        name: '버거 세트',
+        name: 'BEVERAGE',
     },
     {
         idx: 3,
-        name: '해피밀',
+        name: 'FLATCCINO',
     },
     {
         idx: 4,
-        name: '디저트&사이드',
+        name: 'ICE CREAM',
     },
     {
         idx: 5,
-        name: '음료&커피',
+        name: 'BREAD',
     },
 ];
 
@@ -183,185 +183,194 @@ function AdminUpdateMenu() {
 
     return (
         <div className='h-full mt-8 flex flex-col items-center'>
-            <h2 className='h-12 text-2xl font-semibold text-white'>
+            <h2 className='text-2xl font-bold mb-5 text-center text-gray-600 mt-5'>
                 상품정보 수정
             </h2>
-            <table className='h-3/5 w-4/5 border-2 border-slate-700 rounded-md bg-slate-400'>
+            <table className='w-4/5 border-2 rounded-md bg-white mx-auto mt-5'>
                 <tbody>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+                    {/* 이름 */}
+                    <tr className='border-b border-slate-300'>
+                        <th className='text-left px-4 py-2 bg-slate-200 w-1/4'>
                             이름
                         </th>
-                        <th className='w-2/3 pl-2 box-border'>
+                        <td className='px-4 py-2 w-3/4'>
                             <input
                                 type='text'
                                 defaultValue={item?.menuName}
                                 onChange={(e) =>
-                                    setUpdatedData((data) => {
-                                        return {
-                                            ...data,
-                                            menuName: e.target.value,
-                                        };
-                                    })
+                                    setUpdatedData((data) => ({
+                                        ...data,
+                                        menuName: e.target.value,
+                                    }))
                                 }
-                                className='w-full h-3/4 text-base text-center font-normal border border-none rounded-lg bg-transparent focus:outline-none'
+                                className='w-full px-2 py-1 text-center border-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
                             />
-                        </th>
+                        </td>
                     </tr>
-                    <tr className='border h-28 border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+
+                    {/* 이미지 */}
+                    <tr className='border-b border-slate-300 h-32'>
+                        <th className='text-left px-4 py-2 bg-slate-200'>
                             이미지
                         </th>
-                        <th>
-                            <div className='w-40 m-auto'>
+                        <td className='px-10 py-2 flex items-center gap-4'>
+                            <div className='w-28 h-28 overflow-hidden flex-shrink-0'>
                                 <img
                                     src={imageFile}
-                                    alt={item && item?.menuName}
+                                    alt={item?.menuName}
+                                    className='object-contain w-full h-full'
                                 />
                             </div>
-                        </th>
-                        <th>
-                            <label
-                                htmlFor='input-file'
-                                className='px-5 bg-gray-600 border border-none rounded-md py-2 text-slate-200 font-medium hover:bg-gray-500 cursor-pointer'
-                            >
-                                변경
-                            </label>
-                            <input
-                                id='input-file'
-                                type='file'
-                                onChange={handleFilesChange}
-                                className='hidden'
-                            />
-                        </th>
+                            <div>
+                                <label
+                                    htmlFor='input-file'
+                                    className='inline-block bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-500 cursor-pointer'
+                                >
+                                    변경
+                                </label>
+                                <input
+                                    id='input-file'
+                                    type='file'
+                                    onChange={handleFilesChange}
+                                    className='hidden'
+                                />
+                            </div>
+                        </td>
                     </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+
+                    {/* 가격 */}
+                    <tr className='border-b border-slate-300'>
+                        <th className='text-left px-4 py-2 bg-slate-200'>
                             가격
                         </th>
-                        <th>
+                        <td className='px-4 py-2'>
                             <input
                                 type='number'
                                 defaultValue={item?.menuPrice}
                                 onChange={(e) =>
-                                    setUpdatedData((data) => {
-                                        return {
-                                            ...data,
-                                            menuPrice: e.target.valueAsNumber,
-                                        };
-                                    })
+                                    setUpdatedData((data) => ({
+                                        ...data,
+                                        menuPrice: e.target.valueAsNumber,
+                                    }))
                                 }
-                                className='w-full h-3/4 text-center text-base font-normal border border-none rounded-lg bg-transparent focus:outline-none'
+                                className='w-full px-2 py-1 border rounded-md text-right focus:outline-none focus:ring-2 focus:ring-blue-400'
                             />
-                        </th>
+                        </td>
                     </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+
+                    {/* 상품코드 */}
+                    <tr className='border-b border-slate-300'>
+                        <th className='text-left px-4 py-2 bg-slate-200'>
                             상품코드
                         </th>
-                        <th>
+                        <td className='px-4 py-2'>
                             <input
                                 type='text'
                                 defaultValue={item?.menuCode}
-                                className='w-full h-3/4 text-center text-base font-normal border border-none rounded-lg bg-transparent'
+                                className='w-full px-2 py-1 border rounded-md bg-gray-100 text-gray-600'
                                 disabled
                             />
-                        </th>
+                        </td>
                     </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+
+                    {/* 칼로리 */}
+                    <tr className='border-b border-slate-300'>
+                        <th className='text-left px-4 py-2 bg-slate-200'>
                             칼로리
                         </th>
-                        <th>
+                        <td className='px-4 py-2 '>
                             <input
                                 type='number'
                                 defaultValue={item?.menuCalory}
                                 onChange={(e) =>
-                                    setUpdatedData((data) => {
-                                        return {
-                                            ...data,
-                                            menuCalory: e.target.valueAsNumber,
-                                        };
-                                    })
+                                    setUpdatedData((data) => ({
+                                        ...data,
+                                        menuCalory: e.target.valueAsNumber,
+                                    }))
                                 }
-                                className='w-full h-3/4 text-center text-base font-normal border border-none rounded-lg bg-transparent focus:outline-none'
+                                className='w-full px-2 py-1 border rounded-md text-right focus:outline-none focus:ring-2 focus:ring-blue-400'
                             />
-                        </th>
+                        </td>
                     </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+
+                    {/* 옵션 */}
+                    <tr className='border-b border-slate-300'>
+                        <th className='text-left px-4 py-2 bg-slate-200'>
                             옵션
                         </th>
-                        <th>
+                        <td className='px-4 py-2'>
                             <select
                                 onChange={(e) =>
-                                    setUpdatedData((data) => {
-                                        return {
-                                            ...data,
-                                            menuCategory: +e.target.value,
-                                        };
-                                    })
+                                    setUpdatedData((data) => ({
+                                        ...data,
+                                        menuCategory: +e.target.value,
+                                    }))
                                 }
-                                className='bg-transparent text-base font-medium w-36 focus:outline-none'
                                 value={updatedData.menuCategory}
+                                className='w-full px-2 py-1 text-right border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-400'
                             >
                                 {categories.map((category) => (
                                     <option
                                         key={category.idx}
                                         value={category.idx}
-                                        className='text-center'
                                     >
                                         {category.name}
                                     </option>
                                 ))}
                             </select>
-                        </th>
+                        </td>
                     </tr>
-                    <tr className='border border-slate-700'>
-                        <th className='text-base border-r border-slate-700'>
+
+                    {/* 추천 */}
+                    <tr className='border-b border-slate-300'>
+                        <th className='text-left px-4 py-2 bg-slate-200'>
                             추천
                         </th>
-                        <th>
+                        <td className='px-4 py-2 text-center'>
                             <input
                                 type='checkbox'
                                 checked={updatedData.menuRecommend}
-                                className='w-5 h-5'
                                 onChange={(e) =>
                                     setUpdatedData((data) => ({
                                         ...data,
                                         menuRecommend: e.target.checked,
                                     }))
                                 }
+                                className='w-5 h-5'
                             />
-                        </th>
+                        </td>
                     </tr>
+
+                    {/* 최종수정시간 */}
                     <tr>
-                        <th className='text-base border-r border-slate-700'>
+                        <th className='text-left px-2 py-2 bg-slate-200'>
                             최종수정시간
                         </th>
-                        <th className='text-base font-normal'>
+                        <td className='px-4 py-3 text-center text-gray-600'>
                             {item
                                 ? formatDate(new Date(item.menuUpdateDate))
                                 : ''}
-                        </th>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <div className='w-1/3 h-10 mt-5 flex justify-between'>
+
+            {/* 버튼 영역 */}
+            <div className='w-1/2 mx-auto mt-6 flex justify-center'>
                 <Button
-                    bgColor='bg-blue-600'
+                    bgColor='bg-[#12225c]'
                     text='수정하기'
                     textColor='white'
                     textSize='base'
-                    classes='w-24 h-full font-semibold ml-1 hover:bg-blue-800'
+                    classes='w-24 h-10 font-semibold hover:bg-[#59648C] hover:bg-gray-300 rounded mr-5'
                     onClick={updateMenuItem}
                 />
                 <Button
-                    bgColor='bg-red-600'
+                    bgColor='bg-gray-400'
                     text='취소'
                     textColor='white'
                     textSize='base'
-                    classes='w-24 h-full font-semibold ml-1 hover:bg-red-800'
+                    classes='w-24 h-10 font-semibold hover:bg-gray-300 rounded'
                     onClick={() => navigate(-1)}
                 />
             </div>

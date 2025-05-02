@@ -1,9 +1,8 @@
+import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { Menu, Users, ShoppingCart, List, CupSoda } from 'lucide-react'; // 아이콘
 
-function AdminOutlet() {
-    const location = useLocation();
+function AdminLayout() {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -11,58 +10,71 @@ function AdminOutlet() {
             navigate('/admin/user');
         }
     }, []);
+
     return (
-        <>
-            <h1 className='text-5xl font-bold font-mono text-center mt-10 text-white'>
-                키오스크 관리자 화면
-            </h1>
-            <ul className='w-full flex justify-between items-center mt-7 border-y-2 border-gray-100-200'>
+        <div className='flex h-screen bg-gray-100'>
+            {/* 햄버거 사이드바 */}
+            <aside className='group fixed top-0 h-full bg-[#12225c] text-white transition-all duration-300 w-16 hover:w-40 overflow-hidden z-10'>
+                <div className='flex items-center justify-center py-4'></div>
                 <NavLink
                     to='/admin/user'
-                    className='text-lg font-semibold w-1/3 py-2 border-r-2 text-slate-200 hover:bg-slate-200 hover:text-black'
-                    style={({ isActive }) => ({
-                        backgroundColor: isActive
-                            ? 'rgb(226 232 240)'
-                            : 'transparent',
-                        color: isActive ? 'black' : 'rgb(226 232 240)',
-                    })}
+                    className={({ isActive }) =>
+                        `flex items-center gap-4 px-4 py-3 hover:bg-slate-200 hover:text-black transition-all ${
+                            isActive ? 'bg-white text-black' : 'text-slate-200'
+                        }`
+                    }
                 >
-                    <button className='w-full text-lg font-semibold'>
+                    <Users />
+                    <span className='whitespace-nowrap hidden group-hover:inline'>
                         회원 관리
-                    </button>
+                    </span>
                 </NavLink>
                 <NavLink
                     to='/admin/menu'
-                    className='text-lg font-semibold w-1/3 py-2 border-r-2 text-slate-200 hover:bg-slate-200 hover:text-black active:bg-slate-200 active:text-black'
-                    style={({ isActive }) => ({
-                        backgroundColor: isActive
-                            ? 'rgb(226 232 240)'
-                            : 'transparent',
-                        color: isActive ? 'black' : 'rgb(226 232 240)',
-                    })}
+                    className={({ isActive }) =>
+                        `flex items-center gap-4 px-4 py-3 hover:bg-slate-200 hover:text-black transition-all ${
+                            isActive ? 'bg-white text-black' : 'text-slate-200'
+                        }`
+                    }
                 >
-                    <button className=' w-full text-lg font-semibold'>
+                    <CupSoda />
+                    <span className='whitespace-nowrap hidden group-hover:inline'>
                         상품 관리
-                    </button>
+                    </span>
                 </NavLink>
-
                 <NavLink
                     to='/admin/order'
-                    className='w-1/3 py-2 text-slate-200 hover:bg-slate-200 hover:text-black active:bg-slate-200 active:text-black'
-                    style={({ isActive }) => ({
-                        backgroundColor: isActive
-                            ? 'rgb(226 232 240)'
-                            : 'transparent',
-                        color: isActive ? 'black' : 'rgb(226 232 240)',
-                    })}
+                    className={({ isActive }) =>
+                        `flex items-center gap-4 px-4 py-3 hover:bg-slate-200 hover:text-black transition-all ${
+                            isActive ? 'bg-white text-black' : 'text-slate-200'
+                        }`
+                    }
                 >
-                    <button className=' w-full text-lg font-semibold'>
+                    <ShoppingCart />
+                    <span className='whitespace-nowrap hidden group-hover:inline'>
                         주문 관리
-                    </button>
+                    </span>
                 </NavLink>
-            </ul>
-            <Outlet />
-        </>
+            </aside>
+
+            {/* 메인 컨텐츠 */}
+            <main className='ml-16 group-hover:ml-40 transition-all duration-300 flex-1 p-10 overflow-y-auto bg-slate-100'>
+                <header className='mb-6 flex justify-between items-center'>
+                    <h1 className='text-3xl font-bold'>관리자 페이지</h1>
+                    <button
+                        onClick={() => {
+                            sessionStorage.clear();
+                            navigate('/');
+                        }}
+                        className='w-[100px] bg-[#12225c] text-white px-4 py-2 rounded'
+                    >
+                        로그아웃
+                    </button>
+                </header>
+                <Outlet />
+            </main>
+        </div>
     );
 }
-export default AdminOutlet;
+
+export default AdminLayout;

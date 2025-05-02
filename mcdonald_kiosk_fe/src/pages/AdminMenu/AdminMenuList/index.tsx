@@ -95,14 +95,16 @@ function AdminMenuList() {
 
     return (
         <div className='flex flex-col justify-center items-center'>
-            <h2 className='text-3xl font-bold mt-5 text-white'>상품 목록</h2>
+            <h2 className='text-2xl font-bold mb-5 text-center text-gray-600'>
+                상품 목록
+            </h2>
 
             <div className='w-full mt-2 p-2'>
-                <p className='text-base text-gray-300'>
+                <p className='text-base mb-2 text-gray-600'>
                     총 {itemList?.totalElements}개의 상품이 있습니다.
                 </p>
-                <table className='w-full mt-3 text-base text-left text-gray-500'>
-                    <thead className='text-base text-gray-700 bg-slate-300'>
+                <table className='table-fixed w-full border border-gray-300 rounded-md shadow-md'>
+                    <thead className='bg-white text-gray-700 border-b border-gray-200'>
                         <tr>
                             <th className='px-2 py-2'>번호</th>
                             <th className='px-2 py-2'>이름</th>
@@ -113,44 +115,48 @@ function AdminMenuList() {
                             <th className='px-2 py-2'>삭제</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='bg-white divide-y divide-gray-200'>
                         {itemList?.content.map((item, idx) => (
-                            <tr key={item.menuIdx} className='bg-gray-200'>
+                            <tr key={item.menuIdx} className='bg-white'>
                                 <td className='px-5 py-1'>
                                     {itemList.pageable.pageNumber *
                                         itemList.pageable.pageSize +
                                         idx +
                                         1}
                                 </td>
-                                <td className='px-2 py-1 font-medium text-gray-900 text-ellipsis'>
+                                <td className='px-2.5 py-1 font-medium text-sm text-gray-700'>
                                     {item.menuName}
                                 </td>
-                                <td className='py-1'>
-                                    <div className='w-28'>
+                                <td className='py-4 py-2 font-medium text-sm text-gray-700'>
+                                    <div className='w-24'>
                                         <img
                                             src={`/assets/${item.imgSrc}`}
                                             alt={item.menuName}
                                         />
                                     </div>
                                 </td>
-                                <td className='px-2 py-1'>{item.menuPrice}</td>
-                                <td className='px-2 py-1'>{item.menuOption}</td>
-                                <td className='pr-1.5'>
+                                <td className='px-4 py-1 py-1 font-medium text-sm text-gray-700'>
+                                    {item.menuPrice}
+                                </td>
+                                <td className='px-0.5 py-1 py-1 font-medium text-sm text-gray-700'>
+                                    {item.menuOption}
+                                </td>
+                                <td className='px-4 py-3 whitespace-nowrap text-sm'>
                                     <button
                                         onClick={() =>
                                             navigate(
                                                 `/admin/menu/${categoryId}/${item.menuIdx}`
                                             )
                                         }
-                                        className='w-14 border border-none bg-blue-500 rounded-lg px-3 py-2 text-white text-sm hover:bg-blue-700'
+                                        className='px-4 py-2 text-sm text-white bg-[#12225c] hover:bg-[#59648C] rounded'
                                     >
                                         수정
                                     </button>
                                 </td>
-                                <td className='pl-1.5'>
+                                <td className='px-2 py-3 whitespace-nowrap text-sm'>
                                     <button
                                         onClick={() => deleteMenu(item.menuIdx)}
-                                        className='w-14 border border-none bg-red-600 rounded-lg px-3 py-2 text-white text-sm hover:bg-red-700'
+                                        className='px-4 py-2 text-sm text-white bg-gray-400 hover:bg-gray-300 rounded'
                                     >
                                         삭제
                                     </button>
