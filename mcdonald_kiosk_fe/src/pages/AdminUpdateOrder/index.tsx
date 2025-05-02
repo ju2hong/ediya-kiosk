@@ -119,17 +119,9 @@ export const AdminUpdateOrder = () => {
                 </div>
                 <div className='mb-2'>
                     <label className='block font-bold mb-1'>주문상태</label>
-                    <input
-                        type='text'
-                        value={editedOrder?.orderStatus}
-                        onChange={(e) =>
-                            setEditedOrder((order) => ({
-                                ...order,
-                                orderStatus: e.target.value,
-                            }))
-                        }
-                        className='w-full border border-gray-300 rounded p-2'
-                    />
+                    <p className='p-2 bg-gray-100 text-gray-700 rounded'>
+                        {editedOrder?.orderStatus}
+                    </p>
                 </div>
                 <div className='mb-4'>
                     <label className='block font-bold mb-1'>결제시간</label>
