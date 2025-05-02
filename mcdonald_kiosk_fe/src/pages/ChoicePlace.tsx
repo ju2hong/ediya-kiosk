@@ -9,7 +9,7 @@ function ChoicePlace() {
                 <p>COFFEE</p>
             </div>
 
-            <div className='w-3/4 flex justify-around mt-[70px]'>
+            <div className='w-3/4 flex justify-around mt-[80px]'>
                 <button
                     className='h-72 w-52 bg-white rounded-[30px]'
                     onClick={() => navigate('/menu')}
