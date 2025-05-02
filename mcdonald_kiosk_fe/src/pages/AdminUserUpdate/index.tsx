@@ -174,7 +174,7 @@ export const AdminUserUpdate = () => {
                 </div>
                 <div className='flex justify-center'>
                     <button
-                        className=' w-1/4 bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-400 mr-4'
+                        className=' w-1/4 bg-[#12225c] text-white px-4 py-2 rounded hover:bg-gray-400 mr-4'
                         onClick={handleUserEdit}
                     >
                         수정
